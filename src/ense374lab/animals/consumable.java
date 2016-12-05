@@ -4,20 +4,12 @@
  * and open the template in the editor.
  */
 package ense374lab.animals;
+import java.util.*;
 
 /**
  *
  * @author BenBen
  */
-public class Vegetation extends consumable {
+public class consumable {
     
-private TypeVegetation type;
-public Vegetation (TypeVegetation inType) 
-{
-this.type = inType;
-}
-TypeVegetation getType() {
-    return this.type;
-}
-      
 }

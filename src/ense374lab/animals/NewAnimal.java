@@ -4,70 +4,85 @@
  * and open the template in the editor.
  */
 package ense374lab.animals;
-
+import java.util.*;
 /**
  *
  * @author BenBen
  */
 public class NewAnimal extends World {
-    private static final int MAX_AGE=50;
-    private String  name;
-    private String type;
-    private int age;
-    private boolean alive;
-    public Location location;
-    public boolean hunger;
-    public String foodType;
-    private Field field;
+   protected int movementRange;
+    protected int hunger;
+
+    // all of these could be bundled into a struct called "diet".
+    protected ArrayList<TypeVegetation>      canEatPlants;
+    protected ArrayList<AnimalType> canEatAnimals;
+    protected ArrayList<InsectType>     canEatInsects;
+    protected ArrayList<BirdType>       canEatBirds;
+
+    protected int remainingMoves;
     
-public void NewAnimal(String name, int age, void death, Location location, void hunger){
+    public NewAnimal () {
+        this.canEatPlants      = new ArrayList <TypeVegetation>();
+        this.canEatAnimals = new ArrayList <AnimalType>();
+        this.canEatBirds       = new ArrayList <BirdType>();
+        this.canEatInsects     = new ArrayList <InsectType>();
+        this.hunger            = 2;
+    }
+        
+    public int getHunger () {
+        return hunger;
+    }
     
-}
-public String name(){
+    public void becomeFull () {
+        this.hunger = 2;
+    }
     
-}
-private String Type(){
+    public int getRemainingMoves () {
+        return remainingMoves;
+    }
     
-}
-public int age(int a){
+    public void wakeUp () {
+        this.remainingMoves = movementRange;
+        this.hunger -- ;
+    }
     
-}
-public void increaseInAge(){
- age++;
-if(age > MAX_AGE) {
-death();
-}   
-}
-public void death(){
-alive = false;
-if(location != null)
-{
-field.clear(location);
-location = null;
-field=null; 
-}
-}
-public void breed(){
+    public boolean dietIncludesBirds(){
+        return !canEatBirds.isEmpty();
+    }
+
+    public ArrayList<BirdType> getDietOfBirds() {
+        return this.canEatBirds;
+    }
     
-}
-public void setlocation(Location newLocation){
-   if(location != null) {
-field.clear(location);
-}
-location = newLocation;
-field.place(this, newLocation); 
-}
-public Location getlocation(){
-    return location;
-}
-public void Hunger(){
+    public boolean dietIncludesAnimals(){
+        return !canEatAnimals.isEmpty();
+    }
     
-}
-public void hunt(){
+    public ArrayList<AnimalType> getDietOfAnimals() {
+        return this.canEatAnimals;
+    }
     
-}
-public int addanimal(){
+    public boolean dietIncludesInsects(){
+        return !canEatInsects.isEmpty();
+    }
+
+    public ArrayList<InsectType> getDietOfInsects() {
+        return this.canEatInsects;
+    }
     
-}
+    public boolean dietIncludesPlants(){
+        return !canEatPlants.isEmpty();
+    }    
     
+    public ArrayList<TypeVegetation> getDietOfPlants() {
+        return this.canEatPlants;
+    }
+    
+    public void decrementMoves () {
+        this.remainingMoves --;
+    }
+    
+    public void setDoneMoving () {
+        this.remainingMoves = 0;
+    }  
 }

@@ -9,15 +9,7 @@ package ense374lab.animals;
  *
  * @author BenBen
  */
-public class Vegetation extends consumable {
-    
-private TypeVegetation type;
-public Vegetation (TypeVegetation inType) 
-{
-this.type = inType;
-}
-TypeVegetation getType() {
-    return this.type;
-}
-      
+public enum InsectType {
+    CATERPILLAR,
+    GRASSHOPPER;
 }
